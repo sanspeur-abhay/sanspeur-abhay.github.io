@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Column Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Helvetica', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    fontSize: {
+                        base: '16px',
+                    },
+                },
+            },
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownButton = document.querySelector('[data-dropdown-toggle]');
+            const dropdownMenu = document.querySelector('[data-dropdown-menu]');
+            let isOpen = false;
+
+            // Toggle dropdown on button click
+            dropdownButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                isOpen = !isOpen;
+                dropdownMenu.classList.toggle('hidden');
+                
+                // Rotate arrow icon
+                const arrow = this.querySelector('svg');
+                arrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0)';
+            });
+
+            // Show dropdown on hover
+            dropdownButton.addEventListener('mouseenter', function() {
+                dropdownMenu.classList.remove('hidden');
+                this.querySelector('svg').style.transform = 'rotate(180deg)';
+            });
+
+            // Keep menu open when hovering over it
+            dropdownMenu.addEventListener('mouseenter', function() {
+                dropdownMenu.classList.remove('hidden');
+                dropdownButton.querySelector('svg').style.transform = 'rotate(180deg)';
+            });
+
+            const dropdownContainer = dropdownButton.closest('.relative');
+            dropdownContainer.addEventListener('mouseleave', function(e) {
+                // Check if the mouse is moving to the dropdown menu
+                const rect = dropdownMenu.getBoundingClientRect();
+                const isMovingToMenu = e.clientY >= rect.top && e.clientY <= rect.bottom &&
+                                     e.clientX >= rect.left && e.clientX <= rect.right;
+                
+                if (!isMovingToMenu) {
+                    dropdownMenu.classList.add('hidden');
+                    dropdownButton.querySelector('svg').style.transform = 'rotate(0)';
+                    isOpen = false;
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.add('hidden');
+                    isOpen = false;
+                    dropdownButton.querySelector('svg').style.transform = 'rotate(0)';
+                }
+            });
+        });
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen p-4 px-5">
+    <!-- Header -->
+    <header class="container mx-auto mb-12 mt-16">
+        <div class="flex justify-between items-center">
+            <div>
+                <a href="/" class="inline-block text-gray-800 hover:text-blue-600 text-xl font-semibold transition-colors duration-200">
+                    Abhay Kumar
+                </a>
+                <p class="text-gray-500 text-sm mt-1">Academician, researcher, consultant & corporate trainer.</p>
+            </div>
+            <nav>
+                <ul class="flex gap-12">
+                    <li class="text-base p-2 font-bold text-gray-600 hover:text-blue-600 transition-colors duration-200 tracking-wider "><a href="#">Activities</a></li>
+                    <li class="text-base p-2 font-bold text-gray-600 hover:text-blue-600 transition-colors duration-200 tracking-wider "><a href="#" >Ac</a></li>
+                    <li class="relative p-2 group text-base font-bold text-gray-600 hover:text-blue-600 transition-colors duration-200 tracking-wider">
+                        <a href="#" 
+                           data-dropdown-toggle
+                           class="  flex items-center gap-1">
+                            Academic Research
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                 class="h-4 w-4 transition-transform duration-200" 
+                                 fill="none" 
+                                 viewBox="0 0 24 24" 
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                        <ul data-dropdown-menu
+                            class="absolute border border-gray-200 left-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden transition-all duration-200 group-hover:block">
+                            <!-- Dropdown tip/arrow -->
+                            <div class="absolute -top-2 right-4 w-4 h-4 rotate-45 bg-white border-l border-t border-gray-200"></div>
+                            <li class="p-2 border-b border-gray-100">
+                                <a href="#" class="text-base block px-4 py-2 text-gray-600 hover:text-blue-600 tracking-wider hover:bg-gray-50 rounded transition-all duration-200 flex items-center justify-between">
+                                    Web Projects
+                                </a>
+                            </li>
+                            <li class="p-2 border-b border-gray-100">
+                                <a href="#" class="text-base block px-4 py-2 text-gray-600 hover:text-blue-600 tracking-wider hover:bg-gray-50 rounded transition-all duration-200 flex items-center justify-between">
+                                    Mobile Apps
+                                   
+                                </a>
+                            </li>
+                            <li class="p-2">
+                                <a href="#" class="text-base block px-4 py-2 text-gray-600 hover:text-blue-600 tracking-wider hover:bg-gray-50 rounded transition-all duration-200 flex items-center justify-between">
+                                    Desktop Apps
+                                 
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="text-base p-2 font-bold text-gray-600 hover:text-blue-600 transition-colors duration-200 tracking-wider"><a href="#" >Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mx-auto">
+            <!-- Main content wrapper -->
+            <div class="flex flex-col md:flex-row gap-20">
+                
+                <!-- Left column -->
+                <div class="w-full md:w-2/3">
+                    <h1 class="text-3xl font-bold mb-12">About Me</h1>
+
+                    <div>
+                        <div class="flow-root">
+                            <img src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?q=80&w=2364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sample Image" class="float-left mr-6 mb-4 w-48 rounded-lg shadow-md">
+                            <p class="text-gray-600 mb-4">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.
+                            </p>
+                            <p class="text-gray-600">
+                                Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.
+                                This is the left column content. On mobile devices, this will appear above the right column.
+                                The layout will switch to side-by-side columns on medium-sized screens and larger.
+                                This is the left column content. On mobile devices, this will appear above the right column.
+                                The layout will switch to side-by-side columns on medium-sized screens and larger.
+                                This is the left column content. On mobile devices, this will appear above the right column.
+                                The layout will switch to side-by-side columns on medium-sized screens and larger.
+                            </p>
+                            <p class="text-gray-600">
+                                This is the left column content. On mobile devices, this will appear above the right column.
+                                The layout will switch to side-by-side columns on medium-sized screens and larger.
+                            </p>
+                        </div>
+                    </div>
+
+                   
+                </div>
+
+                <!-- Right column -->
+                <div class="w-full md:w-1/3 border-t-4 border-black py-4" >
+                    <p class="text-gray-600">
+                        This is the right column content. On mobile devices, this will appear below the left column.
+                        The layout will switch to side-by-side columns on medium-sized screens and larger.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container mx-auto mt-20 mb-8">
+        <div class="border-t border-gray-200 pt-8">
+            <div class="flex justify-between items-center">
+                <p class="text-gray-600 text-sm">
+                    © 2024 Dr. Abhay Kumar. All rights reserved.
+                </p>
+               
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html> 
