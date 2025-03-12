@@ -8,7 +8,7 @@ function App() {
         <div className="flex gap-8">
           {/* Main content section (2/3) */}
           <div className="w-2/3 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Main Content</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">About Me</h2>
             <div className="flow-root">
               <img
                 src="https://picsum.photos/400/300"
@@ -16,8 +16,11 @@ function App() {
                 className="float-left mr-6 mb-4 rounded-lg"
               />
               <p className="text-gray-700 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Leading Expert in Environmental Engineering and Waste Management
+
+
               </p>
+              <br/>
               <p className="text-gray-700 mb-4">
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
@@ -33,6 +36,11 @@ function App() {
           {/* Sidebar section (1/3) */}
           <div className="w-1/3 space-y-6">
             <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className='border-b-4 border-b-black-800 border-t-4 border-t-black-800 py-4'>
+                Bio in brief: Prof. Arpan K. Kar is Professor and Endowed Chair Professor in Information Systems in Indian Institute of Technology Delhi, India. Administratively he chairs Information Systems group and Corporate Affairs, and is a member of few other administrative committees. He works on the adoption, appropriation and user experiences of emerging ICTs, using mixed research and ML based methods. He has authored over 200 publications and edited 15 books, of which over 90 publications are ABDC A, ABS 3 and WoS Q1 level journals, and 17 publications are in ABDC A* journals. As of 2024, his research has been cited over 20,000 times with an H index of 65. He is an Associate Editor in Communications of the AIS (ABDC A), Journal of Computer Information Systems (ABDC A), Global Journal of Flexible Systems Management (ABDC A), Applied Operations and Analytics (T&F), International Journal of Electronic Government Research (IGI), etc. He has been a Guest Editor for top journals like Journal of the Association for Information Systems, Decision Support Systems, Industrial Marketing Management, International Journal of Information Management, Information Systems Frontiers, etc. He was the Founding Editor in Chief of International Journal of Information Management Data Insights, published by Elsevier. He was earlier Senior Editor in Decision Support Systems, Associate Editor in International Journal of Information Management, Journal of Public Affairs and Sage Open. He has undertaken over 25 sponsored projects from national and international organizations and over 20 long duration executive education programmes. He received the Research Excellence Award by Clarivate Analytics for highest individual Web of Science citations from 2015-2020. He received the 2020 BK Birla Distinguished Researcher Award for the count of ABDC A* publications over 5 years. He has received three Best Seller Awards from Ivey / Harvard / Case Center his authored teaching cases. He has received over 20 other awards for his research, teaching and services from national and international organizations.
+
+
+              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Latest Updates</h3>
               <ul className="space-y-4">
                 <li className="border-b pb-2">

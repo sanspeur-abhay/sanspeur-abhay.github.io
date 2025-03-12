@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import viteLogo from '/vite.svg';
 
 type NavItem = {
   label: string;
@@ -9,16 +8,20 @@ type NavItem = {
 
 const navigation: NavItem[] = [
   {
-    label: 'Products',
-    items: ['Features', 'Pricing', 'Resources', 'Solutions'],
+    label: 'Activities',
+    items: ['Research & Publiccations', 'Funded Project', 'IP Filed', 'Training Programmes'],
   },
   {
-    label: 'Company',
-    items: ['About', 'Blog', 'Careers', 'Contact'],
+    label: 'Academic Resources',
+    items: ['Research Resources', 'Term & Condition'],
   },
   {
-    label: 'Documentation',
-    href: '/docs',
+    label: 'Lineage',
+    items: ['Awards', 'Research Supervision', 'Photos'],
+  },
+  {
+    label: 'Home',
+    href: '/',
   },
 ];
 
@@ -28,10 +31,16 @@ export default function Header() {
   return (
     <header className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex h-20 justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img className="h-8 w-auto" src={viteLogo} alt="Logo" />
+
+                <a href="/" className="inline-block text-gray-800 hover:text-blue-600 text-xl font-semibold transition-colors duration-200">
+                    Abhay Kumar
+                </a>
+                <p className="text-gray-500 text-sm mt-1">Leading Expert in Environmental Engineering and Waste Management</p>
+    
+
           </div>
 
           {/* Navigation */}
@@ -62,7 +71,7 @@ export default function Header() {
 
                 {/* Dropdown Menu */}
                 {item.items && openMenu === item.label && (
-                  <div className="absolute z-10 -ml-4 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                  <div className="absolute z-10 -ml-4 mt-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                     <div
                       className="py-1"
                       role="menu"
